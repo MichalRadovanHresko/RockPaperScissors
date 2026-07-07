@@ -1,4 +1,4 @@
-import getComputerChoice from "../hooks/getComputerChoice";
+import getComputerChoice from "../hooks/getComputerChoice.jsx";
 
 const Game = () => {
   // user input his choice
