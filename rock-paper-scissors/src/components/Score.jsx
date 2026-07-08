@@ -15,7 +15,7 @@ const Score = () => {
       );
     } else if (result === 2)
       console.log(`It's TIE! The score is: ${userScore} : ${computerScore}`);
-    else if (result === 3) return;
+    else if (result === 3) break;
   }
 
   return <div>Score</div>;
