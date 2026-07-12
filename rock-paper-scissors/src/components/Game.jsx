@@ -1,40 +1,24 @@
 import getComputerChoice from "../hooks/getComputerChoice.jsx";
 
-const Game = () => {
-  // user input his choice
-  let person = prompt(
-    `Please enter your choice: (If you wanna stop the game type: 'stop')`,
-  );
-  // IF user wrote in big letters it will get converted
-  person = person.toLowerCase();
-  // IF user accidentally click space after/before word we remove it
-  person = person.split(" ").join("");
-  if (person === "rock") person = 0;
-  else if (person === "paper") person = 1;
-  else if (person === "scissors") person = 2;
-  else if (person === "stop") return 3;
-  else {
-    console.log("Invalid value! Choose from rock, paper, scissors!");
-    return;
-  }
-
+const Game = (playerChoice) => {
+  const player = playerChoice;
   // Get random computer option
-  let computer = getComputerChoice();
+  const computerChoice = getComputerChoice();
 
-  // IF user use valid option show us info
-  if (person === 0 || person === 1 || person === 2) {
-    console.log(
-      `Your choice: ${person === 0 ? "rock" : person === 1 ? "paper" : "scissors"} VS Computer choice: ${computer === 0 ? "rock" : computer === 1 ? "paper" : "scissors"}`,
+  // If player used a valid option, evaluate
+  if (player === 0 || player === 1 || player === 2) {
+    alert(
+      `Your choice: ${player === 0 ? "rock" : player === 1 ? "paper" : "scissors"} VS Computer choice: ${computerChoice === 0 ? "rock" : computerChoice === 1 ? "paper" : "scissors"}`,
     );
-    // return the value if its tie
-    if (person === computer) return 2;
-    // return the value if user won
-    else if (person === 0 && computer === 2) return 1;
-    else if (person === 1 && computer === 0) return 1;
-    // return the value if computer won
-    else if (person === 0 && computer === 1) return 0;
-    else if (person === 1 && computer === 2) return 0;
-    else if (person === 2 && computer === 0) return 0;
+    // tie
+    if (player === computerChoice) return 2;
+    // player won
+    else if (player === 0 && computerChoice === 2) return 1;
+    else if (player === 1 && computerChoice === 0) return 1;
+    // computer won
+    else if (player === 0 && computerChoice === 1) return 0;
+    else if (player === 1 && computerChoice === 2) return 0;
+    else if (player === 2 && computerChoice === 0) return 0;
     else return 1;
   }
 };
